@@ -1,5 +1,6 @@
 package application;
 
+import java.util.Date;
 import java.util.List;
 
 import db.DB;
@@ -30,6 +31,13 @@ public class Program {
 		list = sellerDao.findAll();
 
 		list.stream().forEach(System.out::println);
+		
+		System.out.println();
+		
+		System.out.println("=== TEST 4: seller Insert ===");
+		Seller newseller = new Seller(new Department(2, null), null, "Greg", "greg@gmail", new Date(), 4000.0);
+		sellerDao.insert(newseller);
+		System.out.println("Inserted! New id = "+ newseller.getId());
 
 		DB.closeConnection();
 	}
