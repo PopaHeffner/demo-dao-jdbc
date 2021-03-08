@@ -2,6 +2,7 @@ package application;
 
 import java.util.List;
 
+import db.DB;
 import model.dao.DaoFactory;
 import model.dao.SellerDao;
 import model.entities.Department;
@@ -22,7 +23,15 @@ public class Program {
 		List<Seller> list = sellerDao.findByDepartment(new Department(2, null));
 
 		list.stream().forEach(System.out::println);
+		
+		System.out.println();
+		
+		System.out.println("=== TEST 3: seller findByAll ===");
+		list = sellerDao.findAll();
 
+		list.stream().forEach(System.out::println);
+
+		DB.closeConnection();
 	}
 
 }
